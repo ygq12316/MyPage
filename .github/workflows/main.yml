@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "blog-vue/blog-github-pages/dist/**"
+      - ".github/workflows/main.yml"
   workflow_dispatch:
 
 permissions:
@@ -16,27 +19,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy-dist:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Set PUBLIC_PATH
-        run: echo "PUBLIC_PATH=/MyPage/" >> $GITHUB_ENV
-
-      - name: Build
-        run: npm run build
+      - name: Check dist exists
+        run: |
+          if [ ! -d "blog-vue/blog-github-pages/dist" ]; then
+            echo "Missing blog-vue/blog-github-pages/dist"
+            exit 1
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -44,10 +38,10 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: blog-vue/blog-github-pages/dist
 
-  deploy:
-    needs: build
+  publish:
+    needs: deploy-dist
     runs-on: ubuntu-latest
     environment:
       name: github-pages
