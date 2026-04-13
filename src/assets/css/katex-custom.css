@@ -1,0 +1,72 @@
+/* KaTeX公式样式 */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 0;
+  margin: 1.2em 0;
+  text-align: center;
+}
+
+.katex {
+  font-size: 1.1em;
+}
+
+/* 行内公式样式 */
+.katex-inline {
+  display: inline-block;
+  padding: 0 2px;
+}
+
+/* 块级公式样式 */
+.katex-block {
+  display: block;
+  margin: 1em 0;
+  text-align: center;
+  overflow-x: auto;
+}
+
+/* 修复公式容器溢出问题 */
+.katex-display > .katex {
+  max-width: 100%;
+}
+
+.katex-display > .katex > .katex-html {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1px;
+}
+
+/* 适配ByteMD中的公式样式 */
+.markdown-body .math-inline .katex {
+  padding: 0 0.2em;
+}
+
+.markdown-body .math-display {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 1em 0;
+}
+
+/* 确保公式在不同主题下显示正常 */
+.markdown-body .katex .mbin, 
+.markdown-body .katex .mrel, 
+.markdown-body .katex .mord, 
+.markdown-body .katex .mopen, 
+.markdown-body .katex .mclose, 
+.markdown-body .katex .mpunct, 
+.markdown-body .katex .minner {
+  color: inherit;
+}
+
+/* 适配深色主题 */
+.dark-theme .katex .mord, 
+.dark-theme .katex .mbin, 
+.dark-theme .katex .mrel, 
+.dark-theme .katex .mopen, 
+.dark-theme .katex .mclose, 
+.dark-theme .katex .mpunct, 
+.dark-theme .katex .minner {
+  color: #f8f8f2;
+} 

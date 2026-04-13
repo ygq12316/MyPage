@@ -1,0 +1,1462 @@
+body {
+  cursor: url('cursor.cur'), auto;
+}
+a, button, img {
+  cursor: url('cursor.cur'), auto;
+}
+ul{
+  padding:0 !important; 
+}
+body:not(.katex) {
+  /* font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Lato,Roboto,'PingFang SC','Microsoft YaHei',sans-serif; */
+}
+.v-navigation-drawer{
+  z-index: 20;
+}
+
+.v-dialog--fullscreen > .v-card {
+  min-height: 100%;
+  min-width: 100%;
+  padding: 20px !important;
+}
+
+.v-navigation-drawer,.v-toolbar{
+  transition: all 0.5s;
+}
+
+.v-snack__content {
+  justify-content: start;
+}
+
+.theme--light.v-card {
+  background: #fff;
+  color: #4c4948;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 6px rgba(7, 17, 27, 0.06);
+  transition: all 0.3s;
+}
+
+.theme--light.v-card.blog-container{
+  background: #fff !important;
+}
+.theme--light.v-card.article-wrapper {
+  background: #fff !important;
+}
+
+.v-card:not(.v-sheet--tile):not(.v-card--shaped) {
+  border-radius: 8px;
+}
+
+.theme--light.v-card:hover {
+  box-shadow: 0 4px 12px 12px rgba(7, 17, 27, 0.15);
+}
+
+.theme--light.v-app-bar.v-toolbar.v-sheet {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.theme--light.v-app-bar.v-toolbar.v-sheet a{
+  color: #eee;
+}
+
+.theme--light.v-footer {
+  color: #4c4948;
+}
+
+.theme--light.v-navigation-drawer {
+  background: #f6f8fa;
+}
+
+.theme--light.v-application{
+  background: linear-gradient( 90deg, rgba(247, 149, 51, 0.1) 0, rgba(243, 112, 85, 0.1) 15%, rgba(239, 78, 123, 0.1) 30%, rgba(161, 102, 171, 0.1) 44%, rgba(80, 115, 184, 0.1) 58%, rgba(16, 152, 173, 0.1) 72%, rgba(7, 179, 155, 0.1) 86%, rgba(109, 186, 130, 0.1) 100% );
+  color: #4c4948;
+}
+
+.theme--light.v-application a{
+  color: #49b1f5;
+  text-decoration: none;
+}
+
+.theme--light.v-divider {
+  border-color: #ccc;
+}
+
+.theme--dark.v-card{
+  background: #121212;
+  color: rgba(255,255,255,0.8) ;
+}
+
+.theme--dark.v-footer {
+  color: rgba(255,255,255,0.8);
+}
+
+.theme--dark.v-application{
+  background: #121212;
+  color: rgba(255,255,255,0.8);
+}
+
+.theme--dark.v-application a{
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+}
+
+.theme--dark.v-navigation-drawer {
+  background-color: #121212;
+}
+
+.v-application code {
+  color: #dcdcdc;
+  font-weight: normal;
+}
+
+.v-application code:before {
+  content: "";
+}
+
+.v-application code:after {
+  content: "";
+}
+
+canvas {
+  animation: to_show 4s;
+}
+
+@keyframes to_show{
+  0% {
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+100% {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  }
+}
+
+p {
+  margin-bottom: 16px !important;
+}
+
+.login-container {
+  background: #fff !important;
+}
+@media (min-width: 760px) {
+  .v-toolbar__content, .v-toolbar__extension {
+    padding: 10px 36px;
+  }
+  .banner {
+    position: absolute;
+    background-color: #49b1f5;
+    top: -60px;
+    left: 0;
+    right: 0;
+    height: 400px;
+    animation: header-effect 1s;
+  }
+  .banner-title {
+    animation: title-scale 1s;
+    position: absolute;
+    top: 12.5rem;
+    padding: 0 0.5rem;
+    width: 100%;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #eee;
+  }
+  .blog-container {
+    animation: main 1s;
+    max-width: 970px;
+    padding: 50px 40px;
+    margin: 380px auto 40px auto;
+  }
+  .article-container{
+    animation: main 1s;
+    max-width: 1200px;
+    margin: 372.5px auto 40px auto;
+    padding: 0 5px;
+  }
+  .article-wrapper{
+    padding: 50px 40px;
+  }
+  .login-container {
+    padding: 1rem;
+    border-radius: 4px;
+    height: 500px;
+  }
+  .login-wrapper {
+   padding: 3.5rem 1.5rem 0 1.5rem;
+   }
+}
+
+@media (max-width: 759px) {
+  .v-toolbar__content, .v-toolbar__extension {
+    padding: 10px 16px;
+  }
+  .banner {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    right: 0;
+    height: 280px;
+    animation: header-effect 1s;
+  }
+  .blog-container {
+    animation: main 1s;
+    margin: 240px 5px 20px 5px;
+    padding: 36px 14px;
+  }
+  .article-container{
+    animation: main 1s;
+    margin: 312.5px 0px 8px 0px;
+  }
+  .article-wrapper{
+    padding: 36px 14px;
+  }
+  .banner-title {
+    position: absolute;
+    top: 8.5rem;
+    width: 100%;
+    font-size: 1.625rem;
+    text-align: center;
+    color: #eee;
+    animation: title-scale 1s;
+  }
+  .login-container {
+    padding: 1rem;
+    border-radius: 4px;
+    height: 100vh;
+    width: 100vw;
+    
+  }
+  .login-wrapper {
+    padding: 18vh 0.5em 0 0.5rem;
+   }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(73, 177, 245, 0.2);
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #49b1f5;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.4) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 75%,
+    transparent
+  );
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-moz-selection {
+  color: #fff;
+  background-color: #49b1f5;
+}
+
+.emoji-btn {
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.emoji-btn-active {
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #66b1ff;
+}
+
+.emoji-container {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.send-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.login-tip {
+  color: #333;
+  font-size: 0.875rem;
+}
+
+.login-tip span {
+  cursor: pointer;
+}
+
+.separator{
+  margin: 0 6px;
+}
+
+.comment-textarea {
+  font-size: 0.875rem;
+  color: #555 !important;
+  outline: none;
+  padding: 10px 5px;
+  min-height: 122px;
+  resize: none;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.upload-btn{
+  color: #fff;
+  margin-left: 1rem;
+  background-color: #49b1f5;
+}
+
+.upload-btn:hover{
+  background-color: #ff7242;
+}
+
+.cancle-btn{
+  background-color: #90939910;
+  border-color: #90939950;
+  color: #4c4948;
+}
+
+.v-comment-btn{
+  border: 1px solid #ededed;
+  border-color: #fff;
+  border-radius: 4px;
+  text-align: center;
+  padding: 6px 16px;
+  font-size: 14px;
+  transition: all 0.3s;
+  outline: none;
+}
+
+.comment-input{
+  position: relative;
+}
+
+.commmen-img{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+@keyframes header-effect{
+  0% {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: translateY(0);
+  }
+}
+
+@keyframes title-scale{
+  0% {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transform: scale(.7);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: scale(1);
+  }
+}
+
+@keyframes main{
+  0% {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: translateY(0);
+  }
+}
+
+.hljs {
+  background: #282c34 !important;
+}
+
+pre.hljs code {
+  display: block !important;
+  margin: 0 10px !important;
+  overflow-x: auto !important;
+}
+
+
+.is-collapsed {
+  display: none;
+}
+
+.toc-list-item{
+  line-height: 2;
+  list-style: none;
+}
+.toc-link {
+  display: block;
+  border-left: 3px solid transparent;
+  padding-left: 6px;
+  color: #666261 !important;
+  transition: all .2s ease-in-out;
+}
+.is-active-link{
+  border-left-color: #009d92;
+  background: #00c4b6;
+  color: #fff !important;
+}
+
+.col-xl, .col-xl-auto, .col-xl-12, .col-xl-11, .col-xl-10, .col-xl-9, .col-xl-8, .col-xl-7, .col-xl-6, .col-xl-5, .col-xl-4, .col-xl-3, .col-xl-2, .col-xl-1, .col-lg, .col-lg-auto, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col-md, .col-md-auto, .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-sm, .col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col, .col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {
+  width: 100%;
+  padding: 7.5px;
+}
+
+.right-container ol{
+  padding-left: 0px !important;
+}
+.right-container .is-collapsible{
+  padding-left: 8px !important;
+}
+.bbox {
+ left: -40px;
+ bottom: 10px;
+}
+.bbox_active{
+ left: 20px;
+ bottom: 20px;
+}
+.bbox:hover:not(.bbox_active){
+  transform: translate(45px, 0);
+}
+.list_box {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.music_list {
+  max-width: 1320px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  border-radius: 5px;
+}
+.music_talk_list{
+  font-size: 12px;
+}
+.talk_content{
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; 
+  overflow: hidden;
+}
+.pan{
+  width: 80px;
+  height: 80px;
+  padding: 13px;
+}
+#nprogress .bar {
+  background:#49b1f5 !important; 
+}
+
+/* 深色模式全局样式 */
+body.theme-dark,
+[data-theme='dark'] {
+  background-color: #121212 !important;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+/* Markdown 内容区域深色模式样式 */
+body.theme-dark .markdown-body,
+[data-theme='dark'] .markdown-body {
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important;
+}
+
+/* 代码块深色模式样式 */
+body.theme-dark .markdown-body pre,
+[data-theme='dark'] .markdown-body pre {
+  background-color: #282c34 !important;
+  border-color: #3e4451 !important;
+}
+
+body.theme-dark .markdown-body code,
+[data-theme='dark'] .markdown-body code {
+  background-color: #282c34 !important;
+  color: #abb2bf !important;
+}
+
+/* 卡片深色模式样式 */
+body.theme-dark .v-card,
+[data-theme='dark'] .v-card {
+  background-color: #1e1e1e !important;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+/* 链接深色模式样式 */
+body.theme-dark a,
+[data-theme='dark'] a {
+  color: #61afef !important;
+}
+
+/* 标题深色模式样式 */
+body.theme-dark h1, body.theme-dark h2, body.theme-dark h3, 
+body.theme-dark h4, body.theme-dark h5, body.theme-dark h6,
+[data-theme='dark'] h1, [data-theme='dark'] h2, [data-theme='dark'] h3, 
+[data-theme='dark'] h4, [data-theme='dark'] h5, [data-theme='dark'] h6 {
+  color: #e6e6e6 !important;
+}
+
+/* 引用深色模式样式 */
+body.theme-dark blockquote,
+[data-theme='dark'] blockquote {
+  background-color: #282c34 !important;
+  border-left-color: #61afef !important;
+  color: #abb2bf !important;
+}
+
+/* 表格深色模式样式 */
+body.theme-dark table,
+[data-theme='dark'] table {
+  border-color: #3e4451 !important;
+}
+
+body.theme-dark th, body.theme-dark td,
+[data-theme='dark'] th, [data-theme='dark'] td {
+  border-color: #3e4451 !important;
+}
+
+body.theme-dark tr:nth-child(2n),
+[data-theme='dark'] tr:nth-child(2n) {
+  background-color: #282c34 !important;
+}
+
+/* 目录深色模式样式 */
+body.theme-dark .toc-card,
+[data-theme='dark'] .toc-card {
+  background-color: #1e1e1e !important;
+}
+
+body.theme-dark .toc-item,
+[data-theme='dark'] .toc-item {
+  color: #d4d4d4 !important;
+}
+
+body.theme-dark .toc-item.active,
+[data-theme='dark'] .toc-item.active {
+  background-color: #2c313a !important;
+}
+
+/* 全局深色模式样式 */
+body.theme-dark,
+[data-theme='dark'] {
+  background-color: #121212 !important;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+/* 卡片深色模式 */
+body.theme-dark .v-card,
+body.theme-dark .blog-container,
+[data-theme='dark'] .v-card,
+[data-theme='dark'] .blog-container {
+  background-color: #1e1e1e !important;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+/* Banner深色模式 */
+body.theme-dark .banner .banner-title,
+[data-theme='dark'] .banner .banner-title {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 分类页面深色模式 */
+body.theme-dark .category-title,
+[data-theme='dark'] .category-title {
+  color: #e0e0e0 !important;
+}
+
+body.theme-dark .category-list-container,
+[data-theme='dark'] .category-list-container {
+  background: #2c2c2c !important;
+}
+
+body.theme-dark .category-list-item a,
+[data-theme='dark'] .category-list-item a {
+  color: #d4d4d4 !important;
+}
+
+body.theme-dark .category-list-item:hover,
+[data-theme='dark'] .category-list-item:hover {
+  background-color: rgba(73, 177, 245, 0.2) !important;
+}
+
+body.theme-dark .category-count,
+[data-theme='dark'] .category-count {
+  color: #aaaaaa !important;
+}
+
+body.theme-dark .category-list-item,
+[data-theme='dark'] .category-list-item {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 标签页面深色模式 */
+body.theme-dark .tag-cloud-wrapper,
+[data-theme='dark'] .tag-cloud-wrapper {
+  background-color: #2c2c2c !important;
+}
+
+body.theme-dark .tag-title-text,
+[data-theme='dark'] .tag-title-text {
+  color: #e0e0e0 !important;
+}
+
+/* 关于页面深色模式 */
+body.theme-dark .resume-container,
+[data-theme='dark'] .resume-container {
+  background-color: #1e1e1e !important;
+}
+
+body.theme-dark .left-column,
+[data-theme='dark'] .left-column {
+  border-right-color: #333333 !important;
+}
+
+body.theme-dark .name-title h2,
+body.theme-dark .section-title,
+[data-theme='dark'] .name-title h2,
+[data-theme='dark'] .section-title {
+  color: #e0e0e0 !important;
+}
+
+body.theme-dark .info-list li,
+body.theme-dark .skills-list li,
+[data-theme='dark'] .info-list li,
+[data-theme='dark'] .skills-list li {
+  color: #cccccc !important;
+}
+
+body.theme-dark .certificate-item,
+[data-theme='dark'] .certificate-item {
+  background-color: #333333 !important;
+  color: #d4d4d4 !important;
+}
+
+body.theme-dark .project-card,
+[data-theme='dark'] .project-card {
+  background-color: #252525 !important;
+  border-left-color: #49b1f5 !important;
+}
+
+body.theme-dark .project-header,
+body.theme-dark .tech-stack,
+[data-theme='dark'] .project-header,
+[data-theme='dark'] .tech-stack {
+  border-color: #444444 !important;
+}
+
+body.theme-dark .project-header h3,
+[data-theme='dark'] .project-header h3 {
+  color: #e0e0e0 !important;
+}
+
+body.theme-dark .project-points li,
+[data-theme='dark'] .project-points li {
+  color: #b8b8b8 !important;
+}
+
+body.theme-dark .project-points li strong,
+[data-theme='dark'] .project-points li strong {
+  color: #d4d4d4 !important;
+}
+
+body.theme-dark .date-tag,
+[data-theme='dark'] .date-tag {
+  color: #aaaaaa !important;
+}
+
+body.theme-dark .tech-tag,
+[data-theme='dark'] .tech-tag {
+  background-color: #333333 !important;
+  color: #49b1f5 !important;
+}
+
+body.theme-dark .project-title:before,
+[data-theme='dark'] .project-title:before {
+  background-color: #252525 !important;
+}
+
+body.theme-dark .my-divider,
+[data-theme='dark'] .my-divider {
+  border-color: #444444 !important;
+}
+
+/* 评论区深色模式 */
+body.theme-dark .v-textarea,
+[data-theme='dark'] .v-textarea {
+  background-color: #333333 !important;
+  color: #d4d4d4 !important;
+}
+
+body.theme-dark .v-btn,
+[data-theme='dark'] .v-btn {
+  color: #ffffff !important;
+}
+
+/* 表情包界面深色模式 */
+body.theme-dark .emoji-list,
+[data-theme='dark'] .emoji-list {
+  background-color: #2c2c2c !important;
+  border-color: #444444 !important;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+body.theme-dark .emoji-item:hover,
+[data-theme='dark'] .emoji-item:hover {
+  background-color: #3c3c3c !important;
+}
+
+/* 分享面板深色模式 - 更精确的选择器 */
+body.theme-dark .share-dialog,
+body.theme-dark .v-dialog,
+body.theme-dark .v-menu__content,
+body.theme-dark .v-sheet,
+[data-theme='dark'] .share-dialog,
+[data-theme='dark'] .v-dialog,
+[data-theme='dark'] .v-menu__content,
+[data-theme='dark'] .v-sheet {
+  background-color: #2c2c2c !important;
+  color: #e0e0e0 !important;
+}
+
+/* 分享平台标题 */
+body.theme-dark .platform-title,
+[data-theme='dark'] .platform-title {
+  color: #e0e0e0 !important;
+  border-bottom-color: #444444 !important;
+}
+
+/* 分享图标下方文字 */
+body.theme-dark .platform-name,
+body.theme-dark .share-text,
+[data-theme='dark'] .platform-name,
+[data-theme='dark'] .share-text {
+  color: #d4d4d4 !important;
+}
+
+/* 分享项目容器 */
+body.theme-dark .share-item,
+[data-theme='dark'] .share-item {
+  background-color: #383838 !important;
+}
+
+body.theme-dark .share-item:hover,
+[data-theme='dark'] .share-item:hover {
+  background-color: #4a4a4a !important;
+}
+
+/* 针对可能使用的分隔线 */
+body.theme-dark .divider,
+body.theme-dark .v-divider,
+[data-theme='dark'] .divider,
+[data-theme='dark'] .v-divider {
+  border-color: #444444 !important;
+}
+
+/* 特别添加针对分享弹出框的样式 */
+body.theme-dark div[role="dialog"],
+[data-theme='dark'] div[role="dialog"] {
+  background-color: #2c2c2c !important;
+}
+
+/* 确保所有弹出菜单都使用深色背景 */
+body.theme-dark .v-menu__content,
+[data-theme='dark'] .v-menu__content {
+  background-color: #2c2c2c !important;
+  border-color: #444444 !important;
+}
+
+/* 完善分享面板深色模式 */
+/* 整个分享弹出面板 */
+body.theme-dark .v-dialog,
+body.theme-dark .share-dialog,
+body.theme-dark div[role="dialog"],
+[data-theme='dark'] .v-dialog,
+[data-theme='dark'] .share-dialog,
+[data-theme='dark'] div[role="dialog"] {
+  background-color: #1e1e1e !important;
+  color: #e0e0e0 !important;
+  border-color: #444444 !important;
+}
+
+/* 分享平台分类标题 */
+body.theme-dark .国内平台,
+body.theme-dark .国际平台,
+body.theme-dark .更多平台,
+[data-theme='dark'] .国内平台,
+[data-theme='dark'] .国际平台,
+[data-theme='dark'] .更多平台 {
+  color: #e0e0e0 !important;
+  border-bottom-color: #444444 !important;
+}
+
+/* 分享选项背景 - 使用通用选择器 */
+body.theme-dark [class^="v-dialog"] [class*="平台"] ~ div > div,
+[data-theme='dark'] [class^="v-dialog"] [class*="平台"] ~ div > div {
+  background-color: #333333 !important;
+}
+
+/* 分享选项文字颜色 */
+body.theme-dark [class^="v-dialog"] [class*="平台"] ~ div > div *,
+[data-theme='dark'] [class^="v-dialog"] [class*="平台"] ~ div > div * {
+  color: #e0e0e0 !important;
+}
+
+/* 分割线 */
+body.theme-dark hr,
+[data-theme='dark'] hr {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 评论区深色模式样式 */
+body.theme-dark .comment-container,
+[data-theme='dark'] .comment-container {
+  background-color: #1e1e1e !important;
+}
+
+body.theme-dark .comment-item,
+[data-theme='dark'] .comment-item {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.theme-dark .comment-info,
+body.theme-dark .comment-time,
+[data-theme='dark'] .comment-info,
+[data-theme='dark'] .comment-time {
+  color: #b0b0b0 !important;
+}
+
+body.theme-dark .comment-content,
+[data-theme='dark'] .comment-content {
+  color: #e0e0e0 !important;
+}
+
+/* 文章目录深色模式 */
+body.theme-dark .toc-card,
+[data-theme='dark'] .toc-card {
+  background-color: #1e1e1e !important;
+}
+
+body.theme-dark .toc-tabs .tab-item,
+[data-theme='dark'] .toc-tabs .tab-item {
+  color: #b0b0b0 !important;
+}
+
+body.theme-dark .toc-tabs .tab-item.active,
+[data-theme='dark'] .toc-tabs .tab-item.active {
+  color: #49b1f5 !important;
+}
+
+body.theme-dark .toc-item,
+[data-theme='dark'] .toc-item {
+  color: #b0b0b0 !important;
+}
+
+body.theme-dark .toc-item.active,
+[data-theme='dark'] .toc-item.active {
+  color: #49b1f5 !important;
+  background-color: rgba(73, 177, 245, 0.1) !important;
+}
+
+/* 推荐文章深色模式 */
+body.theme-dark .recommend-container,
+[data-theme='dark'] .recommend-container {
+  background-color: #1e1e1e !important;
+}
+
+body.theme-dark .recommend-title,
+[data-theme='dark'] .recommend-title {
+  color: #e0e0e0 !important;
+}
+
+body.theme-dark .recommend-item,
+[data-theme='dark'] .recommend-item {
+  background-color: #2c2c2c !important;
+}
+
+body.theme-dark .recommend-info,
+[data-theme='dark'] .recommend-info {
+  color: #d4d4d4 !important;
+}
+
+body.theme-dark .recommend-date,
+[data-theme='dark'] .recommend-date {
+  color: #b0b0b0 !important;
+}
+
+/* 针对全局弹出层的深色模式 */
+body.theme-dark .v-menu__content,
+body.theme-dark .v-dialog__content,
+[data-theme='dark'] .v-menu__content,
+[data-theme='dark'] .v-dialog__content {
+  background-color: transparent !important;
+}
+
+body.theme-dark .v-dialog > *,
+[data-theme='dark'] .v-dialog > * {
+  background-color: #1e1e1e !important;
+}
+
+/* 修复表情选择器 */
+body.theme-dark .emoji-list,
+[data-theme='dark'] .emoji-list {
+  background-color: #2c2c2c !important;
+  border-color: #444444 !important;
+}
+
+/* 关于页面 - 特别调整深色模式下的文字颜色 */
+body.theme-dark .resume-container *,
+[data-theme='dark'] .resume-container * {
+  color: #ffffff !important; /* 设置所有文本为白色 */
+}
+
+/* 专门针对经历标题 */
+body.theme-dark .section-title,
+body.theme-dark h2.section-title,
+body.theme-dark .project-title,
+[data-theme='dark'] .section-title,
+[data-theme='dark'] h2.section-title,
+[data-theme='dark'] .project-title {
+  color: #ffffff !important;
+}
+
+/* 校园经历和获奖经历部分 */
+body.theme-dark .experience-title,
+body.theme-dark .experience-time,
+body.theme-dark .award-list li,
+body.theme-dark .experience-item *,
+[data-theme='dark'] .experience-title,
+[data-theme='dark'] .experience-time,
+[data-theme='dark'] .award-list li,
+[data-theme='dark'] .experience-item * {
+  color: #ffffff !important;
+}
+
+/* 特别处理图标颜色 */
+body.theme-dark .v-icon,
+[data-theme='dark'] .v-icon {
+  color: #49b1f5 !important; /* 使用品牌蓝色 */
+}
+
+/* 保留金银铜奖牌的特殊颜色 */
+body.theme-dark .v-icon[color="gold"],
+[data-theme='dark'] .v-icon[color="gold"] {
+  color: gold !important;
+}
+
+body.theme-dark .v-icon[color="silver"],
+[data-theme='dark'] .v-icon[color="silver"] {
+  color: silver !important;
+}
+
+body.theme-dark .v-icon[color="brown"],
+[data-theme='dark'] .v-icon[color="brown"] {
+  color: #cd853f !important; /* 使用更亮的棕色 */
+}
+
+/* 个人信息部分 */
+body.theme-dark .info-list li,
+[data-theme='dark'] .info-list li {
+  color: #ffffff !important;
+}
+
+/* 技能清单部分 */
+body.theme-dark .skills-list li,
+[data-theme='dark'] .skills-list li {
+  color: #ffffff !important;
+}
+
+/* 证书部分 */
+body.theme-dark .certificate-item,
+[data-theme='dark'] .certificate-item {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+}
+
+/* 项目部分 */
+body.theme-dark .project-header h3,
+body.theme-dark .project-content *,
+body.theme-dark .project-points li,
+[data-theme='dark'] .project-header h3,
+[data-theme='dark'] .project-content *,
+[data-theme='dark'] .project-points li {
+  color: #ffffff !important;
+}
+
+/* 项目标签 */
+body.theme-dark .tech-tag,
+[data-theme='dark'] .tech-tag {
+  background-color: #333333 !important;
+  color: #49b1f5 !important; /* 保持品牌蓝色 */
+}
+
+/* 日期标签 */
+body.theme-dark .date-tag,
+[data-theme='dark'] .date-tag {
+  color: #ffffff !important;
+}
+
+/* 强制应用最高优先级 */
+body.theme-dark .resume-container *:not(.v-icon),
+[data-theme='dark'] .resume-container *:not(.v-icon) {
+  color: #ffffff !important;
+}
+
+/* 特别处理可能的灰色文本 */
+body.theme-dark [style*="color: #4c4948"],
+body.theme-dark [style*="color: #666"],
+body.theme-dark [style*="color: #777"],
+body.theme-dark [style*="color: #888"],
+body.theme-dark [style*="color: #999"],
+body.theme-dark [style*="color: gray"],
+body.theme-dark [style*="color: grey"],
+[data-theme='dark'] [style*="color: #4c4948"],
+[data-theme='dark'] [style*="color: #666"],
+[data-theme='dark'] [style*="color: #777"],
+[data-theme='dark'] [style*="color: #888"],
+[data-theme='dark'] [style*="color: #999"],
+[data-theme='dark'] [style*="color: gray"],
+[data-theme='dark'] [style*="color: grey"] {
+  color: #ffffff !important;
+}
+
+/* 评论区域深色模式样式 */
+body.theme-dark .comment-textarea,
+[data-theme='dark'] .comment-textarea {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #333333 !important;
+}
+
+/* 评论输入框的placeholder颜色 */
+body.theme-dark .comment-textarea::placeholder,
+[data-theme='dark'] .comment-textarea::placeholder {
+  color: #999999 !important;
+}
+
+/* 评论区域的文字颜色 */
+body.theme-dark .comment-content,
+body.theme-dark .comment-title,
+body.theme-dark .count,
+[data-theme='dark'] .comment-content,
+[data-theme='dark'] .comment-title,
+[data-theme='dark'] .count {
+  color: #ffffff !important;
+}
+
+/* 侧边栏站点统计文字颜色 */
+body.theme-dark .blog-info-wrapper *,
+[data-theme='dark'] .blog-info-wrapper * {
+  color: #ffffff !important;
+}
+
+body.theme-dark .blog-info-data a,
+[data-theme='dark'] .blog-info-data a {
+  color: #ffffff !important;
+}
+
+/* 评论区其他文字元素 */
+body.theme-dark .comment-input-wrapper,
+body.theme-dark .comment-meta,
+body.theme-dark .reply-meta,
+[data-theme='dark'] .comment-input-wrapper,
+[data-theme='dark'] .comment-meta,
+[data-theme='dark'] .reply-meta {
+  color: #ffffff !important;
+  border-color: #333333 !important;
+}
+
+/* 评论区底部分割线 */
+body.theme-dark .comment-meta,
+[data-theme='dark'] .comment-meta {
+  border-bottom: 1px dashed #333333 !important;
+}
+
+/* 保持博主标签等特殊标记的颜色不变 */
+body.theme-dark .blogger-tag,
+[data-theme='dark'] .blogger-tag {
+  color: #ffffff !important;
+  background: #ffa51e !important;
+}
+
+/* 回复按钮颜色 */
+body.theme-dark .reply-btn,
+[data-theme='dark'] .reply-btn {
+  color: #ff4d4f !important;
+}
+
+/* 点赞按钮颜色 */
+body.theme-dark .like:hover,
+body.theme-dark .like-active,
+[data-theme='dark'] .like:hover,
+[data-theme='dark'] .like-active {
+  color: #eb5055 !important;
+}
+
+/* 博主信息区域的深色模式样式 */
+body.theme-dark .blogger-info,
+[data-theme='dark'] .blogger-info {
+  color: #ffffff !important;
+}
+
+/* 博主昵称 */
+body.theme-dark .blogger-info h2,
+body.theme-dark .blogger-info h3,
+[data-theme='dark'] .blogger-info h2,
+[data-theme='dark'] .blogger-info h3 {
+  color: #ffffff !important;
+}
+
+/* 博主签名 */
+body.theme-dark .blogger-info p,
+[data-theme='dark'] .blogger-info p {
+  color: #ffffff !important;
+}
+
+/* 确保所有博主相关文字都是白色 */
+body.theme-dark .blogger-info *,
+[data-theme='dark'] .blogger-info * {
+  color: #ffffff !important;
+}
+
+/* 如果有特定的博主名称类 */
+body.theme-dark .blogger-name,
+[data-theme='dark'] .blogger-name {
+  color: #ffffff !important;
+}
+
+/* 博主签名描述 */
+body.theme-dark .blogger-description,
+[data-theme='dark'] .blogger-description {
+  color: #ffffff !important;
+}
+
+/* Markdown 标题颜色 */
+body.theme-dark .markdown-body h1,
+body.theme-dark .markdown-body h2,
+body.theme-dark .markdown-body h3,
+body.theme-dark .markdown-body h4,
+body.theme-dark .markdown-body h5,
+body.theme-dark .markdown-body h6,
+[data-theme='dark'] .markdown-body h1,
+[data-theme='dark'] .markdown-body h2,
+[data-theme='dark'] .markdown-body h3,
+[data-theme='dark'] .markdown-body h4,
+[data-theme='dark'] .markdown-body h5,
+[data-theme='dark'] .markdown-body h6 {
+  color: #61AFEF !important;
+}
+
+/* Mermaid 图表文字颜色 */
+body.theme-dark .bytemd-mermaid text,
+[data-theme='dark'] .bytemd-mermaid text,
+body.theme-dark .bytemd-mermaid .messageText,
+[data-theme='dark'] .bytemd-mermaid .messageText,
+body.theme-dark .bytemd-mermaid .actor,
+[data-theme='dark'] .bytemd-mermaid .actor,
+body.theme-dark .bytemd-mermaid .labelText,
+[data-theme='dark'] .bytemd-mermaid .labelText,
+body.theme-dark .bytemd-mermaid .noteText,
+[data-theme='dark'] .bytemd-mermaid .noteText {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Mermaid 图表中的所有文本元素 */
+body.theme-dark .bytemd-mermaid .actor text,
+[data-theme='dark'] .bytemd-mermaid .actor text,
+body.theme-dark .bytemd-mermaid text.actor,
+[data-theme='dark'] .bytemd-mermaid text.actor,
+body.theme-dark .bytemd-mermaid .messageText,
+[data-theme='dark'] .bytemd-mermaid .messageText,
+body.theme-dark .bytemd-mermaid .loopText,
+[data-theme='dark'] .bytemd-mermaid .loopText,
+body.theme-dark .bytemd-mermaid .labelText,
+[data-theme='dark'] .bytemd-mermaid .labelText,
+body.theme-dark .bytemd-mermaid .label text,
+[data-theme='dark'] .bytemd-mermaid .label text,
+body.theme-dark .bytemd-mermaid .node text,
+[data-theme='dark'] .bytemd-mermaid .node text {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  stroke: none !important;
+}
+
+/* 确保 Mermaid 图表中的线条也是白色 */
+body.theme-dark .bytemd-mermaid .messageLine0,
+body.theme-dark .bytemd-mermaid .messageLine1,
+[data-theme='dark'] .bytemd-mermaid .messageLine0,
+[data-theme='dark'] .bytemd-mermaid .messageLine1 {
+  stroke: #ffffff !important;
+}
+
+/* 确保 Mermaid 图表中的箭头是白色 */
+body.theme-dark .bytemd-mermaid marker,
+[data-theme='dark'] .bytemd-mermaid marker {
+  fill: #ffffff !important;
+}
+
+/* 强制所有 Markdown 内容中的文本为白色 */
+body.theme-dark .markdown-body,
+[data-theme='dark'] .markdown-body {
+  color: #ffffff !important;
+}
+
+/* 确保链接文本依然可见但有区别 */
+body.theme-dark .markdown-body a,
+[data-theme='dark'] .markdown-body a {
+  color: #58a6ff !important;
+}
+
+/* 确保代码块中的注释和普通文本也是白色 */
+body.theme-dark .markdown-body pre code,
+[data-theme='dark'] .markdown-body pre code {
+  color: #ffffff !important;
+}
+
+/* 博主信息深色模式 - 添加更高优先级的选择器 */
+body.theme-dark .v-navigation-drawer .blogger-info,
+[data-theme='dark'] .v-navigation-drawer .blogger-info {
+  color: #ffffff !important;
+}
+
+/* 博主名称 Auroral */
+body.theme-dark .v-navigation-drawer .name-title,
+[data-theme='dark'] .v-navigation-drawer .name-title {
+  color: #ffffff !important;
+}
+
+/* 博主签名 "去无人的岛 摸鲨鱼的角" */
+body.theme-dark .v-navigation-drawer .name-title p,
+[data-theme='dark'] .v-navigation-drawer .name-title p {
+  color: #ffffff !important;
+}
+
+/* 站点统计数字和文字 */
+body.theme-dark .v-navigation-drawer .blog-info-wrapper .blog-info-data div,
+[data-theme='dark'] .v-navigation-drawer .blog-info-wrapper .blog-info-data div {
+  color: #ffffff !important;
+}
+
+/* 站点统计链接 */
+body.theme-dark .v-navigation-drawer .blog-info-wrapper .blog-info-data a,
+[data-theme='dark'] .v-navigation-drawer .blog-info-wrapper .blog-info-data a {
+  color: #ffffff !important;
+}
+
+/* 确保所有博主相关文字都是白色 - 使用更具体的选择器 */
+body.theme-dark .v-navigation-drawer .blogger-info *,
+body.theme-dark .v-navigation-drawer .blog-info-wrapper *,
+[data-theme='dark'] .v-navigation-drawer .blogger-info *,
+[data-theme='dark'] .v-navigation-drawer .blog-info-wrapper * {
+  color: #ffffff !important;
+}
+
+/* 数字统计特别处理 */
+body.theme-dark .v-navigation-drawer .blog-info-data div[style*="font-size"],
+[data-theme='dark'] .v-navigation-drawer .blog-info-data div[style*="font-size"] {
+  color: #ffffff !important;
+}
+
+/* 直接针对导航抽屉中的所有文本 */
+.theme--dark .v-navigation-drawer,
+body.theme-dark .v-navigation-drawer,
+[data-theme='dark'] .v-navigation-drawer {
+  color: #ffffff !important;
+}
+
+/* 针对博主名称和签名的容器 */
+.theme--dark .v-navigation-drawer > div,
+body.theme-dark .v-navigation-drawer > div,
+[data-theme='dark'] .v-navigation-drawer > div {
+  color: #ffffff !important;
+}
+
+/* 针对文章、分类、标签的文字 */
+.theme--dark .blog-info-data,
+body.theme-dark .blog-info-data,
+[data-theme='dark'] .blog-info-data {
+  color: #ffffff !important;
+}
+
+/* 强制所有文本节点为白色 */
+.theme--dark .v-navigation-drawer *:not(i):not(.v-icon),
+body.theme-dark .v-navigation-drawer *:not(i):not(.v-icon),
+[data-theme='dark'] .v-navigation-drawer *:not(i):not(.v-icon) {
+  color: #ffffff !important;
+}
+
+/* 特别针对链接文本 */
+.theme--dark .v-navigation-drawer a,
+body.theme-dark .v-navigation-drawer a,
+[data-theme='dark'] .v-navigation-drawer a {
+  color: #ffffff !important;
+}
+
+/* 确保文本节点继承颜色 */
+.theme--dark .v-navigation-drawer,
+body.theme-dark .v-navigation-drawer,
+[data-theme='dark'] .v-navigation-drawer {
+  color-scheme: dark;
+}
+
+/* 强制覆盖任何可能的内联样式 */
+.theme--dark .v-navigation-drawer [style*="color"],
+body.theme-dark .v-navigation-drawer [style*="color"],
+[data-theme='dark'] .v-navigation-drawer [style*="color"] {
+  color: #ffffff !important;
+}
+
+/* 主页博主信息卡片深色模式 */
+.theme--dark .blog-card .author-name,
+body.theme-dark .blog-card .author-name,
+[data-theme='dark'] .blog-card .author-name {
+  color: #ffffff !important;
+}
+
+.theme--dark .blog-card .author-description,
+body.theme-dark .blog-card .author-description,
+[data-theme='dark'] .blog-card .author-description {
+  color: #ffffff !important;
+}
+
+/* 站点统计信息 */
+.theme--dark .blog-card .site-state-item .state-num,
+body.theme-dark .blog-card .site-state-item .state-num,
+[data-theme='dark'] .blog-card .site-state-item .state-num {
+  color: #ffffff !important;
+}
+
+.theme--dark .blog-card .site-state-item .state-name,
+body.theme-dark .blog-card .site-state-item .state-name,
+[data-theme='dark'] .blog-card .site-state-item .state-name {
+  color: #ffffff !important;
+}
+
+/* 确保链接文字也是白色 */
+.theme--dark .blog-card .site-state-item a,
+body.theme-dark .blog-card .site-state-item a,
+[data-theme='dark'] .blog-card .site-state-item a {
+  color: #ffffff !important;
+}
+
+/* 整体强制所有文字为白色 */
+.theme--dark .blog-card .author-wrapper *,
+.theme--dark .blog-card .site-state *,
+body.theme-dark .blog-card .author-wrapper *,
+body.theme-dark .blog-card .site-state *,
+[data-theme='dark'] .blog-card .author-wrapper *,
+[data-theme='dark'] .blog-card .site-state * {
+  color: #ffffff !important;
+}
+
+/* 代码块深色模式 */
+body.theme-dark .markdown-body pre,
+[data-theme='dark'] .markdown-body pre {
+  background-color: #282c34 !important;
+  border: 1px solid #3e4451 !important;
+}
+
+body.theme-dark .markdown-body pre code,
+[data-theme='dark'] .markdown-body pre code {
+  color: #abb2bf !important;
+  background-color: transparent !important;
+}
+
+/* 代码块语法高亮颜色 */
+body.theme-dark .hljs-keyword,
+[data-theme='dark'] .hljs-keyword {
+  color: #c678dd !important; /* 关键字 */
+}
+
+body.theme-dark .hljs-string,
+[data-theme='dark'] .hljs-string {
+  color: #98c379 !important; /* 字符串 */
+}
+
+body.theme-dark .hljs-comment,
+[data-theme='dark'] .hljs-comment {
+  color: #5c6370 !important; /* 注释 */
+}
+
+body.theme-dark .hljs-function,
+[data-theme='dark'] .hljs-function {
+  color: #61afef !important; /* 函数 */
+}
+
+body.theme-dark .hljs-number,
+[data-theme='dark'] .hljs-number {
+  color: #d19a66 !important; /* 数字 */
+}
+
+body.theme-dark .hljs-class,
+[data-theme='dark'] .hljs-class {
+  color: #e5c07b !important; /* 类名 */
+}
+
+body.theme-dark .hljs-variable,
+[data-theme='dark'] .hljs-variable {
+  color: #e06c75 !important; /* 变量 */
+}
+
+/* 文章标题容器背景透明 */
+body.theme-dark .article-content,
+[data-theme='dark'] .article-content,
+body.theme-dark .article-wrapper,
+[data-theme='dark'] .article-wrapper,
+body.theme-dark .markdown-body,
+[data-theme='dark'] .markdown-body {
+  background-color: transparent !important;
+}
+
+/* 确保文章内容区域背景色为深色 */
+body.theme-dark .v-card.article-wrapper,
+[data-theme='dark'] .v-card.article-wrapper {
+  background-color: #1e1e1e !important;
+}
+
+/* 确保标题区域背景透明 */
+body.theme-dark .article-title-container,
+[data-theme='dark'] .article-title-container,
+body.theme-dark .article-info-container,
+[data-theme='dark'] .article-info-container {
+  background-color: transparent !important;
+}
+
+/* 修改文章容器背景，但保持标题区域透明 */
+body.theme-dark .article.article-content,
+[data-theme='dark'] .article.article-content {
+  background-color: transparent !important;
+}

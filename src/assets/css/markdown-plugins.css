@@ -1,0 +1,73 @@
+/* KaTeX公式样式 */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 0;
+  margin: 1.2em 0;
+}
+
+.katex {
+  font-size: 1.1em;
+}
+
+/* ByteMD中的公式样式 */
+.markdown-body .math {
+  font-size: 1.1em;
+}
+
+.markdown-body .math-inline {
+  padding: 0 0.2em;
+}
+
+.markdown-body .math-display {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 1em 0;
+  text-align: center;
+}
+
+/* Mermaid流程图样式 */
+.markdown-body .mermaid {
+  margin: 1em auto;
+  text-align: center;
+  max-width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.markdown-body .mermaid svg {
+  max-width: 100%;
+}
+
+/* 深色主题下的Mermaid样式 */
+.theme-dark .markdown-body .mermaid {
+  background: #2d2d2d;
+  color: #ccc;
+}
+
+/* 确保代码区域的可读性 */
+.markdown-body pre {
+  overflow-x: auto;
+}
+
+/* frontmatter样式 */
+.markdown-body .frontmatter-container {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  background: #f8f8f8;
+  color: #333;
+}
+
+.markdown-body .frontmatter-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.markdown-body .frontmatter-property {
+  font-family: monospace;
+} 
