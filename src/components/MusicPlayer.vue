@@ -104,8 +104,8 @@ export default {
 
 :deep(.aplayer.aplayer-fixed) {
   position: fixed !important;
-  right: 16px !important;
-  left: auto !important;
+  left: 16px !important;
+  right: auto !important;
   bottom: 16px !important;
   width: 320px !important;
   max-width: 320px !important;
@@ -114,8 +114,8 @@ export default {
 
 :deep(.aplayer.aplayer-fixed .aplayer-body) {
   position: fixed !important;
-  right: 0 !important;
-  left: auto !important;
+  left: 16px !important;
+  right: auto !important;
   bottom: 16px !important;
   width: 320px !important;
 }
