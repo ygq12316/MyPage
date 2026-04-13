@@ -10,6 +10,7 @@ import {
 } from "./data";
 
 const MESSAGE_STORAGE_KEY = "blog_messages_v1";
+const VIEWS_STORAGE_KEY = "blog_views_count_v1";
 
 function getStoredMessages() {
   if (typeof window === "undefined" || !window.localStorage) {
@@ -31,6 +32,22 @@ function saveStoredMessages(list) {
     window.localStorage.setItem(MESSAGE_STORAGE_KEY, JSON.stringify(list));
   } catch (e) {
     // Ignore storage write errors in mock mode.
+  }
+}
+
+function getNextViewsCount() {
+  if (typeof window === "undefined" || !window.localStorage) {
+    return blogInfo.viewsCount || 0;
+  }
+
+  try {
+    const raw = window.localStorage.getItem(VIEWS_STORAGE_KEY);
+    const current = raw == null ? (blogInfo.viewsCount || 0) : (parseInt(raw, 10) || 0);
+    const next = current + 1;
+    window.localStorage.setItem(VIEWS_STORAGE_KEY, String(next));
+    return next;
+  } catch (e) {
+    return blogInfo.viewsCount || 0;
   }
 }
 
@@ -88,7 +105,10 @@ function matchResponse(config) {
   }
 
   if (/^\/api\/?$/.test(url)) {
-    return ok(blogInfo);
+    return ok({
+      ...blogInfo,
+      viewsCount: getNextViewsCount()
+    });
   }
 
   if (/\/api\/articles\/newest/.test(url)) {

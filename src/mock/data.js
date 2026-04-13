@@ -1112,7 +1112,7 @@ server {
 
 // ---------- 博客信息 ----------
 export const blogInfo = {
-  viewsCount: 58392,
+  viewsCount: 0,
   websiteName: "AllureBlog",
   github: "https://github.com/ygq12316",
   qq: "",

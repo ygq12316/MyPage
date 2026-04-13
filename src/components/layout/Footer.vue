@@ -43,13 +43,13 @@
 </template>
 
 <script>
-const BASE_RUNTIME_SECONDS = 384 * 24 * 60 * 60 + 21 * 60 + 50;
+const BASE_RUNTIME_SECONDS = 0;
 
 export default {
   data() {
     return {
-      runTime: "384天0时21分50秒",
-      viewsCount: 58392,
+      runTime: "0天0时0分0秒",
+      viewsCount: 0,
       latestArticleTitle: "加载中...",
       latestArticleId: null,
       timer: null,
@@ -77,7 +77,7 @@ export default {
       this.axios
         .get("/api/")
         .then(({ data }) => {
-          if (data.data && data.data.viewsCount) {
+          if (data.data && Object.prototype.hasOwnProperty.call(data.data, "viewsCount")) {
             this.viewsCount = data.data.viewsCount;
           }
         })
