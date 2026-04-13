@@ -29,6 +29,7 @@ export default {
           container: this.$refs.player,
           fixed: true,
           mini: true,
+          listFolded: true,
           autoplay: false,
           mutex: true,
           theme: "#607d8b",
@@ -103,21 +104,25 @@ export default {
 
 :deep(.aplayer.aplayer-fixed) {
   position: fixed !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  max-width: 100% !important;
+  right: 16px !important;
+  left: auto !important;
+  bottom: 16px !important;
+  width: 320px !important;
+  max-width: 320px !important;
   z-index: 9999 !important;
 }
 
 :deep(.aplayer.aplayer-fixed .aplayer-body) {
   position: fixed !important;
-  bottom: 0 !important;
-  left: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+  bottom: 16px !important;
+  width: 320px !important;
 }
 
 :deep(.aplayer.aplayer-fixed.aplayer-narrow) {
-  width: auto !important;
-  max-width: 400px !important;
+  width: 320px !important;
+  max-width: 320px !important;
 }
 
 :deep(.aplayer-miniswitcher) {
