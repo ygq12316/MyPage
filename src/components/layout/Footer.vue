@@ -43,7 +43,8 @@
 </template>
 
 <script>
-const BASE_RUNTIME_SECONDS = 0;
+// 网站上线日期，修改此处即可重置运行时间
+const SITE_LAUNCH_DATE = new Date('2026-04-14T00:00:00+08:00').getTime();
 
 export default {
   data() {
@@ -53,7 +54,7 @@ export default {
       latestArticleTitle: "加载中...",
       latestArticleId: null,
       timer: null,
-      startedAtMs: Date.now() - BASE_RUNTIME_SECONDS * 1000
+      startedAtMs: SITE_LAUNCH_DATE
     };
   },
   computed: {

@@ -17,6 +17,8 @@ import vuetify from "./plugins/vuetify";
 window.QRCode = QRCode;
 Vue.prototype.config = config;
 Vue.config.productionTip = false;
+// 告诉 Vue 2 忽略 <meting-js> 自定义元素（由 MetingJS CDN 注册的 Web Component）
+Vue.config.ignoredElements = ['meting-js'];
 
 // 然后再导入其他样式和插件
 import 'animate.css';

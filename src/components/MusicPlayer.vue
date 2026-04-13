@@ -1,45 +1,29 @@
 <template>
-  <div id="musicPlayer" class="music-player-container"></div>
+  <div class="music-player-container">
+    <!--
+      使用 MetingJS Web Component（CDN 已在 public/index.html 中加载）
+      server: 音乐平台 netease / tencent / kugou
+      type:   song / playlist / album / artist
+      id:     对应歌单/歌曲 ID
+      如需更换歌单，只需修改 id 属性即可
+    -->
+    <meting-js
+      server="netease"
+      type="playlist"
+      id="7452754810"
+      mutex="true"
+      mini="true"
+      fixed="true"
+      list-folded="true"
+      volume="0.7"
+      theme="#607d8b"
+    ></meting-js>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "MusicPlayer",
-  mounted() {
-    this.initPlayer();
-  },
-  methods: {
-    initPlayer() {
-      if (typeof APlayer !== 'undefined') {
-        const ap = new APlayer({
-          container: document.getElementById('musicPlayer'),
-          fixed: true,
-          mini: true,
-          autoplay: false,
-          theme: '#607d8b',
-          loop: 'all',
-          order: 'list',
-          preload: 'auto',
-          volume: 0.7,
-          mutex: true,
-          audio: [
-            {
-              name: '起风了',
-              artist: '买辣椒也用券',
-              url: 'https://music.163.com/song/media/outer/url?id=1330348068.mp3',
-              cover: 'https://p1.music.126.net/6QYQfNBM4xgTJp3HjJ3j3A==/109951163720482466.jpg?param=300x300'
-            },
-            {
-              name: '晴天',
-              artist: '周杰伦',
-              url: 'https://music.163.com/song/media/outer/url?id=186016.mp3',
-              cover: 'https://p1.music.126.net/NxN7Q7xw8Wc58SUgYG3PaA==/109951165882341897.jpg?param=300x300'
-            }
-          ]
-        });
-      }
-    }
-  }
+  name: "MusicPlayer"
 };
 </script>
 
