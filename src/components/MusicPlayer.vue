@@ -121,8 +121,19 @@ export default {
 }
 
 :deep(.aplayer.aplayer-fixed.aplayer-narrow) {
-  width: 320px !important;
-  max-width: 320px !important;
+  width: 66px !important;
+  max-width: 66px !important;
+  min-width: 66px !important;
+}
+
+:deep(.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body) {
+  width: 66px !important;
+  max-width: 66px !important;
+}
+
+:deep(.aplayer.aplayer-fixed.aplayer-narrow .aplayer-info),
+:deep(.aplayer.aplayer-fixed.aplayer-narrow .aplayer-list) {
+  display: none !important;
 }
 
 :deep(.aplayer-miniswitcher) {
