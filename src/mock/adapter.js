@@ -9,6 +9,31 @@ import {
   getArticleDetail
 } from "./data";
 
+const MESSAGE_STORAGE_KEY = "blog_messages_v1";
+
+function getStoredMessages() {
+  if (typeof window === "undefined" || !window.localStorage) {
+    return [...messages];
+  }
+  try {
+    const raw = window.localStorage.getItem(MESSAGE_STORAGE_KEY);
+    if (!raw) return [...messages];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [...messages];
+  } catch (e) {
+    return [...messages];
+  }
+}
+
+function saveStoredMessages(list) {
+  if (typeof window === "undefined" || !window.localStorage) return;
+  try {
+    window.localStorage.setItem(MESSAGE_STORAGE_KEY, JSON.stringify(list));
+  } catch (e) {
+    // Ignore storage write errors in mock mode.
+  }
+}
+
 function buildSearchResult(article) {
   const detail = getArticleDetail(article.id);
   const rawContent = detail?.articleContent || "";
@@ -29,6 +54,34 @@ function matchResponse(config) {
   const url = config.url || "";
   const params = config.params || {};
   const method = (config.method || "get").toLowerCase();
+
+  if (/\/api\/messages/.test(url) && method === "post") {
+    let payload = {};
+    try {
+      payload = typeof config.data === "string"
+        ? JSON.parse(config.data)
+        : (config.data || {});
+    } catch (e) {
+      payload = config.data || {};
+    }
+
+    const stored = getStoredMessages();
+    const newMessage = {
+      id: Date.now(),
+      avatar: payload.avatar || "https://big-event20040810.oss-cn-beijing.aliyuncs.com/avatar/default.png",
+      messageContent: String(payload.messageContent || "").trim(),
+      nickname: payload.nickname || "游客",
+      createTime: new Date().toISOString()
+    };
+
+    if (!newMessage.messageContent) {
+      return { flag: false, code: 400, message: "Message content cannot be empty." };
+    }
+
+    stored.push(newMessage);
+    saveStoredMessages(stored);
+    return { flag: true, code: 200, message: "Message saved." };
+  }
 
   if (method === "post") {
     return ok({ message: "Success (mock mode)." });
@@ -133,7 +186,7 @@ function matchResponse(config) {
   }
 
   if (/\/api\/messages/.test(url)) {
-    return ok(messages);
+    return ok(getStoredMessages());
   }
 
   if (/\/api\/logout/.test(url)) {

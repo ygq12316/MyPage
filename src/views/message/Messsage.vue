@@ -1,8 +1,6 @@
-<template>
+﻿<template>
   <div>
-    <!-- banner -->
     <div class="message-banner">
-      <!-- 弹幕输入框 -->
       <div class="message-container">
         <h1 class="message-title">留言板</h1>
         <div class="animated fadeInUp message-input-wrapper">
@@ -21,7 +19,7 @@
           </button>
         </div>
       </div>
-      <!-- 弹幕列表 -->
+
       <div class="barrage-container">
         <vue-baberrage
           :isShow="barrageIsShow"
@@ -48,10 +46,10 @@
 </template>
 
 <script>
-import { vueBaberrage } from 'vue-baberrage'
+import { vueBaberrage } from "vue-baberrage";
 
 export default {
-  name: 'Message',
+  name: "Message",
   components: {
     vueBaberrage
   },
@@ -67,10 +65,10 @@ export default {
   mounted() {
     this.listMessage();
     this.containerHeight = window.innerHeight - 100;
-    window.addEventListener('resize', this.updateHeight);
+    window.addEventListener("resize", this.updateHeight);
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.updateHeight);
+    window.removeEventListener("resize", this.updateHeight);
   },
   methods: {
     updateHeight() {
@@ -79,46 +77,50 @@ export default {
     listMessage() {
       this.axios.get("/api/messages").then(({ data }) => {
         if (data.flag) {
-          // 转换为新弹幕组件格式，添加随机速度
-          this.barrageList = data.data.map(item => ({
-            id: item.id,
-            avatar: item.avatar,
-            msg: item.messageContent,
-            time: this.getRandomSpeed(), // 随机速度
-            type: 0
-          }));
+          this.barrageList = data.data
+            .map((item) => ({
+              id: item.id,
+              avatar:
+                item.avatar ||
+                "https://big-event20040810.oss-cn-beijing.aliyuncs.com/avatar/default.png",
+              msg: item.messageContent || item.msg || "",
+              time: this.getRandomSpeed(),
+              type: 0
+            }))
+            .filter((item) => item.msg);
         }
       });
     },
     getRandomSpeed() {
-      // 返回 6-10 之间的随机数
       return Math.floor(Math.random() * 4) + 6;
     },
     addToList() {
-      if (this.messageContent.trim() == "") {
+      const content = this.messageContent.trim();
+      if (!content) {
         this.$toast({ type: "error", message: "留言不能为空" });
         return false;
       }
 
       const message = {
         id: Date.now(),
-        avatar: this.$store.state.avatar || "https://big-event20040810.oss-cn-beijing.aliyuncs.com/avatar/default.png",
-        msg: this.messageContent,
-        time: this.getRandomSpeed(), // 使用随机速度
+        avatar:
+          this.$store.state.avatar ||
+          "https://big-event20040810.oss-cn-beijing.aliyuncs.com/avatar/default.png",
+        msg: content,
+        time: this.getRandomSpeed(),
         type: 0
       };
 
       this.barrageList.push(message);
       this.messageContent = "";
-      
-      // 发送到服务器的格式
+
       const serverMessage = {
         messageContent: message.msg,
         avatar: message.avatar,
         nickname: this.$store.state.nickname || "游客"
       };
-      
-      this.axios.post("/api/messages", serverMessage).then(({data}) => {
+
+      this.axios.post("/api/messages", serverMessage).then(({ data }) => {
         if (data.flag) {
           this.$toast({ type: "success", message: "留言成功" });
         } else {
@@ -137,9 +139,8 @@ export default {
   left: 0;
   right: 0;
   height: 100vh;
-  /* 添加备用背景色，以防图片加载失败 */
   background-color: #49b1f5;
-  background-image: url('@/assets/img/6.jpg');
+  background-image: url("@/assets/img/6.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -222,7 +223,6 @@ export default {
   line-height: 30px;
 }
 
-/* 确保弹幕容器样式正确 */
 :deep(.vue-danmaku) {
   width: 100% !important;
   height: 100% !important;

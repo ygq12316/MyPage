@@ -1,40 +1,38 @@
-<template>
+﻿<template>
   <v-footer app padless absolute v-if="!isHidden">
     <div class="footer-wrap">
       <div class="footer-content">
-        <!-- 单行信息布局 -->
         <div class="footer-info-row">
           <div class="info-item">
             <v-icon small class="info-icon">mdi-clock-outline</v-icon>
             <span>运行时间: {{ runTime }}</span>
           </div>
           <div class="dot-divider"></div>
-          
+
           <div class="info-item">
             <v-icon small class="info-icon">mdi-eye-outline</v-icon>
             <span>总访问量: {{ viewsCount }}</span>
           </div>
           <div class="dot-divider"></div>
-          
+
           <div class="info-item">
             <v-icon small class="info-icon">mdi-file-document-outline</v-icon>
-            <span class="latest-article-label">最新发布: 
+            <span class="latest-article-label">
+              最新发布
               <router-link :to="'/articles/' + latestArticleId" class="recent-link">
                 {{ latestArticleTitle }}
               </router-link>
             </span>
           </div>
         </div>
-        
-        <!-- 装饰分割线 -->
+
         <div class="footer-divider"></div>
-        
-        <!-- 版权信息行 -->
+
         <div class="footer-copyright-row">
           <div class="copyright">©2025 - {{ new Date().getFullYear() }} By Allure</div>
           <div class="dot-divider hide-mobile"></div>
           <div class="beian-container">
-            <a href="https://beian.miit.gov.cn/" target="_blank" class="beian"> 备案号 </a>
+            <a href="https://beian.miit.gov.cn/" target="_blank" class="beian">备案号</a>
           </div>
           <div class="dot-divider hide-mobile"></div>
           <div class="powered-by">Powered by Vue.js & Vuetify</div>
@@ -45,19 +43,21 @@
 </template>
 
 <script>
+const BASE_RUNTIME_SECONDS = 384 * 24 * 60 * 60 + 21 * 60 + 50;
+
 export default {
   data() {
     return {
-      runTime: "0天0时0分0秒",
-      viewsCount: 0,
+      runTime: "384天0时21分50秒",
+      viewsCount: 58392,
       latestArticleTitle: "加载中...",
       latestArticleId: null,
-      timer: null
+      timer: null,
+      startedAtMs: Date.now() - BASE_RUNTIME_SECONDS * 1000
     };
   },
   computed: {
     isHidden() {
-      // 在留言页和AI助手页都隐藏底部
       return this.$route.path === "/message" || this.$route.path === "/ai-assistant";
     }
   },
@@ -65,51 +65,47 @@ export default {
     this.getBlogInfo();
     this.getLatestArticle();
     this.calculateRunTime();
-    // 设置定时器，每秒更新一次运行时间
     this.timer = setInterval(this.calculateRunTime, 1000);
   },
   beforeDestroy() {
-    // 组件销毁前清除定时器
     if (this.timer) {
       clearInterval(this.timer);
     }
   },
   methods: {
-    // 获取博客信息
     getBlogInfo() {
-      this.axios.get("/api/").then(({ data }) => {
-        if (data.data && data.data.viewsCount) {
-          this.viewsCount = data.data.viewsCount;
-        }
-      }).catch(error => {
-        
-      });
+      this.axios
+        .get("/api/")
+        .then(({ data }) => {
+          if (data.data && data.data.viewsCount) {
+            this.viewsCount = data.data.viewsCount;
+          }
+        })
+        .catch(() => {});
     },
-    // 获取最新文章
     getLatestArticle() {
-      this.axios.get("/api/articles/newest").then(({ data }) => {
-        if (data.data && data.data.length > 0) {
-          const latestArticle = data.data[0];
-          this.latestArticleTitle = latestArticle.articleTitle;
-          this.latestArticleId = latestArticle.id;
-        }
-      }).catch(error => {
-        
-        this.latestArticleTitle = "暂无更新";
-      });
+      this.axios
+        .get("/api/articles/newest")
+        .then(({ data }) => {
+          if (data.data && data.data.length > 0) {
+            const latestArticle = data.data[0];
+            this.latestArticleTitle = latestArticle.articleTitle;
+            this.latestArticleId = latestArticle.id;
+          }
+        })
+        .catch(() => {
+          this.latestArticleTitle = "暂无更新";
+        });
     },
-    // 计算博客运行时间
     calculateRunTime() {
-      var timeold = new Date().getTime() - new Date("March 26,2025").getTime();
-      var msPerDay = 24 * 60 * 60 * 1000;
-      var daysold = Math.floor(timeold / msPerDay);
-      var str = "";
-      var day = new Date();
-      str += daysold + "天";
-      str += day.getHours() + "时";
-      str += day.getMinutes() + "分";
-      str += day.getSeconds() + "秒";
-      this.runTime = str;
+      const diffMs = Date.now() - this.startedAtMs;
+      const totalSeconds = Math.floor(diffMs / 1000);
+      const days = Math.floor(totalSeconds / (24 * 60 * 60));
+      const remainAfterDays = totalSeconds % (24 * 60 * 60);
+      const hours = Math.floor(remainAfterDays / (60 * 60));
+      const minutes = Math.floor((remainAfterDays % (60 * 60)) / 60);
+      const seconds = remainAfterDays % 60;
+      this.runTime = `${days}天${hours}时${minutes}分${seconds}秒`;
     }
   }
 };
@@ -175,9 +171,9 @@ export default {
 
 .footer-divider {
   height: 1px;
-  background: linear-gradient(90deg, 
-    rgba(255,255,255,0) 0%, 
-    rgba(255,255,255,0.5) 50%, 
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.5) 50%,
     rgba(255,255,255,0) 100%);
   margin: 0 auto;
   width: 80%;
@@ -221,45 +217,42 @@ export default {
   opacity: 0.8;
 }
 
-/* 光效设计 */
 .footer-wrap::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, 
-    rgba(255,255,255,0) 0%, 
-    rgba(255,255,255,0.6) 50%, 
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.6) 50%,
     rgba(255,255,255,0) 100%);
 }
 
-/* 响应式调整 */
 @media (max-width: 768px) {
   .hide-mobile {
     display: none;
   }
-  
+
   .footer-info-row, .footer-copyright-row {
     flex-direction: column;
     gap: 6px;
   }
-  
+
   .dot-divider {
     display: none;
   }
-  
+
   .footer-content {
     padding: 10px 16px;
   }
-  
+
   .footer-divider {
     margin: 6px auto;
   }
 }
 
-/* 悬停效果 */
 .info-item:hover .info-icon {
   transform: scale(1.1);
   transition: transform 0.2s ease;
@@ -272,7 +265,7 @@ export default {
 }
 
 .recent-link::after, .beian::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
