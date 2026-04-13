@@ -23,7 +23,39 @@
 
 <script>
 export default {
-  name: "MusicPlayer"
+  name: "MusicPlayer",
+  mounted() {
+    this.checkMetingReady();
+  },
+  methods: {
+    checkMetingReady() {
+      const maxAttempts = 20;
+      let attempts = 0;
+
+      const timer = setInterval(() => {
+        attempts += 1;
+        const metingDefined =
+          typeof window !== "undefined" &&
+          window.customElements &&
+          window.customElements.get("meting-js");
+
+        if (metingDefined) {
+          clearInterval(timer);
+          return;
+        }
+
+        if (attempts >= maxAttempts) {
+          clearInterval(timer);
+          if (this.$toast) {
+            this.$toast({
+              type: "warning",
+              message: "音乐组件加载失败，请检查网络或 CDN 可用性"
+            });
+          }
+        }
+      }, 300);
+    }
+  }
 };
 </script>
 

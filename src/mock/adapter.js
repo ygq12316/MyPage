@@ -4,25 +4,24 @@ import {
   articles,
   categories,
   tags,
-  messages,
   aboutContent,
   getArticleDetail
 } from "./data";
 
-const MESSAGE_STORAGE_KEY = "blog_messages_v1";
+const MESSAGE_STORAGE_KEY = "blog_messages_v2";
 const VIEWS_STORAGE_KEY = "blog_views_count_v1";
 
 function getStoredMessages() {
   if (typeof window === "undefined" || !window.localStorage) {
-    return [...messages];
+    return [];
   }
   try {
     const raw = window.localStorage.getItem(MESSAGE_STORAGE_KEY);
-    if (!raw) return [...messages];
+    if (!raw) return [];
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [...messages];
+    return Array.isArray(parsed) ? parsed : [];
   } catch (e) {
-    return [...messages];
+    return [];
   }
 }
 
