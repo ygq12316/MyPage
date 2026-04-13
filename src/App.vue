@@ -15,13 +15,9 @@
     <!-- 搜索模态框 -->
     <searchModel></searchModel>
     <!-- 登录模态框 -->
-    <LoginModel></LoginModel>
     <!-- 注册模态框 -->
-    <RegisterModel></RegisterModel>
     <!-- 忘记密码模态框 -->
-    <ForgetModel></ForgetModel>
     <!-- 绑定邮箱模态框 -->
-    <EmailModel></EmailModel>
     <!-- 音乐播放器 -->
     <MusicPlayer></MusicPlayer>
     <!-- 看板娘 -->
@@ -45,10 +41,6 @@ import SideNavBar from "./components/layout/SideNavBar";
 import Footer from "./components/layout/Footer";
 import BackTop from "./components/BackTop";
 import searchModel from "./components/model/SearchModel";
-import LoginModel from "./components/model/LoginModel";
-import RegisterModel from "./components/model/RegisterModel";
-import ForgetModel from "./components/model/ForgetModel";
-import EmailModel from "./components/model/EmailModel";
 import MusicPlayer from "./components/MusicPlayer";
 import Live2d from "./components/Live2d";
 import LoadingOverlay from '@/components/common/LoadingOverlay.vue';
@@ -62,10 +54,6 @@ export default {
     Footer,
     BackTop,
     searchModel,
-    LoginModel,
-    RegisterModel,
-    ForgetModel,
-    EmailModel,
     Live2d,
     LoadingOverlay,
     // MathJaxComponent

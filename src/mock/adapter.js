@@ -1,6 +1,5 @@
-// ========================================================
-// Mock Axios Adapter —— 拦截所有 HTTP 请求，返回静态数据
-// 仅在 GitHub Pages 静态模式下启用
+﻿// ========================================================
+// Mock Axios Adapter 鈥斺€?鎷︽埅鎵€鏈?HTTP 璇锋眰锛岃繑鍥為潤鎬佹暟鎹?// 浠呭湪 GitHub Pages 闈欐€佹ā寮忎笅鍚敤
 // ========================================================
 
 import {
@@ -15,29 +14,61 @@ import {
 } from "./data";
 
 /**
- * 根据 URL 匹配并返回对应的 mock 数据
+ * 鏍规嵁 URL 鍖归厤骞惰繑鍥炲搴旂殑 mock 鏁版嵁
  */
 function matchResponse(config) {
   const url = config.url || "";
   const params = config.params || {};
   const method = (config.method || "get").toLowerCase();
 
-  // POST 请求（点赞、留言等）— 统一返回成功
+  // POST 璇锋眰锛堢偣璧炪€佺暀瑷€绛夛級鈥?缁熶竴杩斿洖鎴愬姛
   if (method === "post") {
-    return ok({ message: "操作成功（静态演示模式）" });
+    return ok({ message: "鎿嶄綔鎴愬姛锛堥潤鎬佹紨绀烘ā寮忥級" });
   }
 
-  // GET /api/ 或 /api  —— 博客全局信息
+  // GET /api/ 鎴?/api  鈥斺€?鍗氬鍏ㄥ眬淇℃伅
   if (/^\/api\/?$/.test(url)) {
     return ok(blogInfo);
   }
 
-  // GET /api/articles/newest  —— 最新文章（前5篇）
+  // GET /api/articles/newest  鈥斺€?鏈€鏂版枃绔狅紙鍓?绡囷級
   if (/\/api\/articles\/newest/.test(url)) {
     return ok(articles.slice(0, 5).map(a => ({ id: a.id, articleTitle: a.articleTitle })));
   }
 
-  // GET /api/articles/archives  —— 归档列表（分页）
+  if (/\/api\/articles\/search/.test(url)) {
+    const keywords = String(params.keywords || "").trim().toLowerCase();
+    if (!keywords) {
+      return ok([]);
+    }
+
+    const result = articles
+      .map(article => {
+        const detail = getArticleDetail(article.id);
+        const content = (detail?.articleContent || "").toLowerCase();
+        const title = article.articleTitle.toLowerCase();
+        const hit = title.includes(keywords) || content.includes(keywords);
+        if (!hit) return null;
+
+        const summary = (detail?.articleContent || "")
+          .replace(/[#>*`\\-]/g, " ")
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, 180);
+
+        return {
+          id: article.id,
+          articleTitle: article.articleTitle,
+          articleContent: summary
+        };
+      })
+      .filter(Boolean)
+      .slice(0, 20);
+
+    return ok(result);
+  }
+
+  // GET /api/articles/archives  鈥斺€?褰掓。鍒楄〃锛堝垎椤碉級
   if (/\/api\/articles\/archives/.test(url)) {
     const current = parseInt(params.current) || 1;
     const pageSize = 10;
@@ -51,20 +82,19 @@ function matchResponse(config) {
     return ok({ recordList, count: articles.length });
   }
 
-  // GET /api/articles/:id  —— 文章详情（由路由路径拼成 /api/articles/1）
-  const articleMatch = url.match(/\/api\/articles\/(\d+)$/);
+  // GET /api/articles/:id  鈥斺€?鏂囩珷璇︽儏锛堢敱璺敱璺緞鎷兼垚 /api/articles/1锛?  const articleMatch = url.match(/\/api\/articles\/(\d+)$/);
   if (articleMatch) {
     const detail = getArticleDetail(articleMatch[1]);
     if (detail) return { flag: true, code: 200, data: detail };
     return { flag: false, code: 404, data: null };
   }
 
-  // GET /api/tags  —— 标签列表
+  // GET /api/tags  鈥斺€?鏍囩鍒楄〃
   if (/\/api\/tags$/.test(url)) {
     return ok({ recordList: tags, count: tags.length });
   }
 
-  // GET /api/tags/:id  —— 标签下的文章列表（分页）
+  // GET /api/tags/:id  鈥斺€?鏍囩涓嬬殑鏂囩珷鍒楄〃锛堝垎椤碉級
   const tagMatch = url.match(/\/api\/tags\/(\d+)$/);
   if (tagMatch) {
     const tagId = parseInt(tagMatch[1]);
@@ -74,17 +104,17 @@ function matchResponse(config) {
     const pageSize = 10;
     const start = (current - 1) * pageSize;
     return ok({
-      name: tag ? tag.tagName : "未知标签",
+      name: tag ? tag.tagName : "鏈煡鏍囩",
       articlePreviewDTOList: filtered.slice(start, start + pageSize)
     });
   }
 
-  // GET /api/categories  —— 分类列表
+  // GET /api/categories  鈥斺€?鍒嗙被鍒楄〃
   if (/\/api\/categories$/.test(url)) {
     return ok({ recordList: categories, count: categories.length });
   }
 
-  // GET /api/categories/:id  —— 分类下的文章列表（分页）
+  // GET /api/categories/:id  鈥斺€?鍒嗙被涓嬬殑鏂囩珷鍒楄〃锛堝垎椤碉級
   const categoryMatch = url.match(/\/api\/categories\/(\d+)$/);
   if (categoryMatch) {
     const categoryId = parseInt(categoryMatch[1]);
@@ -94,43 +124,41 @@ function matchResponse(config) {
     const pageSize = 10;
     const start = (current - 1) * pageSize;
     return ok({
-      name: category ? category.categoryName : "未知分类",
+      name: category ? category.categoryName : "鏈煡鍒嗙被",
       articlePreviewDTOList: filtered.slice(start, start + pageSize)
     });
   }
 
-  // GET /api/about  —— 关于我
-  if (/\/api\/about/.test(url)) {
+  // GET /api/about  鈥斺€?鍏充簬鎴?  if (/\/api\/about/.test(url)) {
     return ok(aboutContent);
   }
 
-  // GET /api/comments  —— 评论列表（返回空）
-  if (/\/api\/comments/.test(url)) {
+  // GET /api/comments  鈥斺€?璇勮鍒楄〃锛堣繑鍥炵┖锛?  if (/\/api\/comments/.test(url)) {
     return ok({ recordList: [], count: 0 });
   }
 
-  // GET /api/messages  —— 留言弹幕
+  // GET /api/messages  鈥斺€?鐣欒█寮瑰箷
   if (/\/api\/messages/.test(url)) {
     return ok(messages);
   }
 
-  // GET /api/logout  —— 注销
+  // GET /api/logout  鈥斺€?娉ㄩ攢
   if (/\/api\/logout/.test(url)) {
-    return { flag: true, code: 200, message: "注销成功" };
+    return { flag: true, code: 200, message: "娉ㄩ攢鎴愬姛" };
   }
 
-  // 兜底：返回空数据
-  return { flag: false, code: 404, data: null, message: "静态模式：接口未实现" };
+  // 鍏滃簳锛氳繑鍥炵┖鏁版嵁
+  return { flag: false, code: 404, data: null, message: "闈欐€佹ā寮忥細鎺ュ彛鏈疄鐜? };
 }
 
 /**
- * 安装 Mock Adapter
- * 替换 axios 默认的 XHR/HTTP adapter，使所有请求走本地数据
+ * 瀹夎 Mock Adapter
+ * 鏇挎崲 axios 榛樿鐨?XHR/HTTP adapter锛屼娇鎵€鏈夎姹傝蛋鏈湴鏁版嵁
  */
 export function installMockAdapter(axios) {
   axios.defaults.adapter = function mockAdapter(config) {
     return new Promise(resolve => {
-      // 模拟网络延迟（50-150ms），让加载动画有机会显示
+      // 妯℃嫙缃戠粶寤惰繜锛?0-150ms锛夛紝璁╁姞杞藉姩鐢绘湁鏈轰細鏄剧ず
       const delay = 50 + Math.random() * 100;
       setTimeout(() => {
         const responseData = matchResponse(config);
@@ -146,3 +174,4 @@ export function installMockAdapter(axios) {
     });
   };
 }
+
