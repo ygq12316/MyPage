@@ -1,59 +1,92 @@
-<template>
+﻿<template>
   <div class="music-player-container">
-    <!--
-      使用 MetingJS Web Component（CDN 已在 public/index.html 中加载）
-      server: 音乐平台 netease / tencent / kugou
-      type:   song / playlist / album / artist
-      id:     对应歌单/歌曲 ID
-      如需更换歌单，只需修改 id 属性即可
-    -->
-    <meting-js
-      server="netease"
-      type="playlist"
-      id="7452754810"
-      mutex="true"
-      mini="true"
-      fixed="true"
-      list-folded="true"
-      volume="0.7"
-      theme="#607d8b"
-    ></meting-js>
+    <div ref="player"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: "MusicPlayer",
+  data() {
+    return {
+      player: null
+    };
+  },
   mounted() {
-    this.checkMetingReady();
+    this.initPlayer();
+  },
+  beforeDestroy() {
+    if (this.player && typeof this.player.destroy === "function") {
+      this.player.destroy();
+      this.player = null;
+    }
   },
   methods: {
-    checkMetingReady() {
-      const maxAttempts = 20;
-      let attempts = 0;
-
-      const timer = setInterval(() => {
-        attempts += 1;
-        const metingDefined =
-          typeof window !== "undefined" &&
-          window.customElements &&
-          window.customElements.get("meting-js");
-
-        if (metingDefined) {
-          clearInterval(timer);
+    async initPlayer() {
+      try {
+        await this.ensureAPlayerReady();
+        this.player = new window.APlayer({
+          container: this.$refs.player,
+          fixed: true,
+          mini: true,
+          autoplay: false,
+          mutex: true,
+          theme: "#607d8b",
+          loop: "all",
+          order: "list",
+          preload: "auto",
+          volume: 0.7,
+          audio: [
+            {
+              name: "SoundHelix Song 1",
+              artist: "SoundHelix",
+              url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+              cover: "https://picsum.photos/seed/music1/300/300"
+            },
+            {
+              name: "SoundHelix Song 2",
+              artist: "SoundHelix",
+              url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+              cover: "https://picsum.photos/seed/music2/300/300"
+            }
+          ]
+        });
+      } catch (error) {
+        if (this.$toast) {
+          this.$toast({
+            type: "warning",
+            message: "音乐播放器加载失败，请检查网络或 CDN"
+          });
+        }
+      }
+    },
+    ensureAPlayerReady() {
+      if (typeof window !== "undefined" && window.APlayer) {
+        return Promise.resolve();
+      }
+      return this.loadScript("https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js")
+        .catch(() => this.loadScript("https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"));
+    },
+    loadScript(src) {
+      return new Promise((resolve, reject) => {
+        const existing = Array.from(document.getElementsByTagName("script")).find((s) => s.src === src);
+        if (existing) {
+          if (typeof window !== "undefined" && window.APlayer) {
+            resolve();
+          } else {
+            existing.addEventListener("load", resolve, { once: true });
+            existing.addEventListener("error", reject, { once: true });
+          }
           return;
         }
 
-        if (attempts >= maxAttempts) {
-          clearInterval(timer);
-          if (this.$toast) {
-            this.$toast({
-              type: "warning",
-              message: "音乐组件加载失败，请检查网络或 CDN 可用性"
-            });
-          }
-        }
-      }, 300);
+        const script = document.createElement("script");
+        script.src = src;
+        script.async = true;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+        document.head.appendChild(script);
+      });
     }
   }
 };
@@ -64,12 +97,10 @@ export default {
   width: 100%;
 }
 
-/* 确保 APlayer 容器正确显示 */
 :deep(.aplayer) {
   z-index: 9999 !important;
 }
 
-/* 固定模式样式 */
 :deep(.aplayer.aplayer-fixed) {
   position: fixed !important;
   bottom: 0 !important;
@@ -84,18 +115,15 @@ export default {
   left: 0 !important;
 }
 
-/* 迷你模式 */
 :deep(.aplayer.aplayer-fixed.aplayer-narrow) {
   width: auto !important;
   max-width: 400px !important;
 }
 
-/* 迷你开关按钮 */
 :deep(.aplayer-miniswitcher) {
   background: #607d8b !important;
 }
 
-/* 歌词显示 */
 :deep(.aplayer-lrc) {
   position: fixed !important;
   bottom: 60px !important;
