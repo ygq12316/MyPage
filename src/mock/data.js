@@ -1162,12 +1162,6 @@ export const aboutContent = `# 关于我
 export const messages = [
   { id: 1, avatar: "https://i.pravatar.cc/40?img=1", msg: "博主写得很好，受益匪浅！", time: 1710000000000, type: 1 },
   { id: 2, avatar: "https://i.pravatar.cc/40?img=2", msg: "Vue3 那篇文章收藏了，讲得超详细", time: 1710086400000, type: 1 },
-  { id: 3, avatar: "https://i.pravatar.cc/40?img=3", msg: "请问有没有 Spring Security 相关的文章？", time: 1710172800000, type: 0 },
-  { id: 4, avatar: "https://i.pravatar.cc/40?img=4", msg: "LRU 那篇帮我通过了面试，谢谢博主！", time: 1710259200000, type: 1 },
-  { id: 5, avatar: "https://i.pravatar.cc/40?img=5", msg: "Docker 部署的文章解决了我的困惑，赞！", time: 1710345600000, type: 1 },
-  { id: 6, avatar: "https://i.pravatar.cc/40?img=6", msg: "继续更新哦，我会长期关注的~", time: 1710432000000, type: 0 },
-  { id: 7, avatar: "https://i.pravatar.cc/40?img=7", msg: "Redis 三大问题讲得很透彻！", time: 1710518400000, type: 1 },
-  { id: 8, avatar: "https://i.pravatar.cc/40?img=8", msg: "前端性能优化那篇也适用于 React 项目", time: 1710604800000, type: 0 }
 ];
 
 // ---------- 工具函数：构造通用响应 ----------
