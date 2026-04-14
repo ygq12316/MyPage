@@ -107,8 +107,6 @@ export default {
   left: 16px !important;
   right: auto !important;
   bottom: 16px !important;
-  width: 320px !important;
-  max-width: 320px !important;
   z-index: 9999 !important;
 }
 
@@ -117,7 +115,6 @@ export default {
   left: 16px !important;
   right: auto !important;
   bottom: 16px !important;
-  width: 320px !important;
 }
 
 :deep(.aplayer.aplayer-fixed.aplayer-narrow) {
@@ -129,11 +126,6 @@ export default {
 :deep(.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body) {
   width: 66px !important;
   max-width: 66px !important;
-}
-
-:deep(.aplayer.aplayer-fixed.aplayer-narrow .aplayer-info),
-:deep(.aplayer.aplayer-fixed.aplayer-narrow .aplayer-list) {
-  display: none !important;
 }
 
 :deep(.aplayer-miniswitcher) {
