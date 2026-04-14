@@ -1,9 +1,9 @@
 ﻿<template>
   <div class="music-player">
     <meting-js
-      server="tencent"
+      server="netease"
       type="playlist"
-      id="9680852022"
+      id="3099335800"
       fixed="true"
       mini="true"
       autoplay="false"
@@ -27,27 +27,35 @@ export default {
 </script>
 
 <style scoped>
+/* 基础定位样式 */
 :deep(.aplayer.aplayer-fixed) {
-  left: 16px !important;
-  right: auto !important;
-  bottom: 16px !important;
-  z-index: 9999 !important;
+  max-width: 400px;
+  left: 0;
+  bottom: 0;
 }
 
 :deep(.aplayer.aplayer-fixed .aplayer-body) {
-  left: 0 !important;
-  right: auto !important;
-  bottom: 0 !important;
-  background: transparent !important;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
 }
 
+/* 迷你模式样式 */
+:deep(.aplayer.aplayer-fixed.aplayer-narrow) {
+  left: 0;
+  bottom: 0;
+}
+
+/* 迷你开关按钮样式 */
 :deep(.aplayer-miniswitcher) {
-  background: #607d8b !important;
+  background: #607d8b;
 }
 
+/* 歌词显示样式 */
 :deep(.aplayer-lrc) {
   position: fixed !important;
-  bottom: 0 !important;
+  bottom: 0px !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   width: 100% !important;
