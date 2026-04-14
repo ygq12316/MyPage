@@ -32,7 +32,7 @@
           <div class="copyright">©2025 - {{ new Date().getFullYear() }} By Allure</div>
           <div class="dot-divider hide-mobile"></div>
           <div class="beian-container">
-            <a href="https://beian.miit.gov.cn/" target="_blank" class="beian">备案号</a>
+            <a href="https://beian.miit.gov.cn/" target="_blank" class="beian"></a>
           </div>
           <div class="dot-divider hide-mobile"></div>
           <div class="powered-by">Powered by Vue.js & Vuetify</div>
