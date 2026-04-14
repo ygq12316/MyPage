@@ -19,3 +19,9 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Local cache/temp
+.npm-cache/
+serve.local.out.log
+serve.local.err.log
+blog-vue/
