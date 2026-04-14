@@ -31,28 +31,14 @@ export default {
   left: 16px !important;
   right: auto !important;
   bottom: 16px !important;
-  max-width: 320px !important;
   z-index: 9999 !important;
 }
 
 :deep(.aplayer.aplayer-fixed .aplayer-body) {
-  position: fixed !important;
-  left: 16px !important;
+  left: 0 !important;
   right: auto !important;
-  bottom: 16px !important;
-  background: rgba(255, 255, 255, 0.9);
-}
-
-:deep(.aplayer.aplayer-fixed.aplayer-narrow) {
-  width: 66px !important;
-  max-width: 66px !important;
-  min-width: 66px !important;
-}
-
-:deep(.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body) {
-  width: 66px !important;
-  max-width: 66px !important;
-  overflow: hidden !important;
+  bottom: 0 !important;
+  background: transparent !important;
 }
 
 :deep(.aplayer-miniswitcher) {
