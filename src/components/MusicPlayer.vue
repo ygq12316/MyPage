@@ -1,9 +1,9 @@
 ﻿<template>
   <div class="music-player">
     <meting-js
-      server="netease"
+      server="tencent"
       type="playlist"
-      id="3099335800"
+      id="9680852022"
       fixed="true"
       mini="true"
       autoplay="false"
